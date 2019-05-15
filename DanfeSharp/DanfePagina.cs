@@ -41,7 +41,7 @@ namespace DanfeSharp
 
         public void DesenharCreditos()
         {
-            Gfx.DrawString("Impresso com DanfeSharp", RetanguloCreditos, Danfe.EstiloPadrao.CriarFonteItalico(6), AlinhamentoHorizontal.Direita);
+            Gfx.DrawString("Impresso com NARWAL TECNOLOGIA LTDA", RetanguloCreditos, Danfe.EstiloPadrao.CriarFonteItalico(6), AlinhamentoHorizontal.Direita);
         }
 
         private void DesenharCanhoto()
