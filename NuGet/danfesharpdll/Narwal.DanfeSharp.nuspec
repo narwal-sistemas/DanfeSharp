@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>Narwal.DanfeSharp</id>
+        <version>1.0.1</version>
+        <title>Narwal DanfeSharp</title>
+        <authors>Narwal</authors>
+        <owners>Narwal</owners>
+        <projectUrl>https://github.com/narwal-sistemas/DanfeSharp</projectUrl>
+        <iconUrl>https://avatars0.githubusercontent.com/u/50633305?s=400&u=cac49d82245d32d08475c524878a431cd8315899&v=4</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Biblioteca para geração de Danfe.</description>
+        <releaseNotes />
+        <copyright>Narwal</copyright>
+        <language>pt-BR</language>
+        <tags>Danfe</tags>
+    </metadata>
+    <files>
+        <file src="..\..\DanfeSharp\bin\Release\DanfeSharp.dll" target="lib\net40\DanfeSharp.dll" />
+        <file src="..\..\DanfeSharp\bin\Release\PDFClown.dll" target="lib\net40\PDFClown.dll" />
+    </files>
+</package>

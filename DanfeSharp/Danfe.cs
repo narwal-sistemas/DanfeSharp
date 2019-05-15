@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using DanfeSharp.Blocos;
 using org.pdfclown.documents;
 using org.pdfclown.documents.contents.fonts;
 using org.pdfclown.files;
 using DanfeSharp.Modelo;
+using File = org.pdfclown.files.File;
 
 namespace DanfeSharp
 {
@@ -71,7 +75,28 @@ namespace DanfeSharp
         {
             if (stream == null) throw new ArgumentNullException(nameof(stream));
 
-            var img = org.pdfclown.documents.contents.entities.Image.Get(stream);
+            MemoryStream newImage;
+
+            Image imag = Image.FromStream(stream);
+            // Assumes myImage is the PNG you are converting
+            using (var b = new Bitmap(imag.Width, imag.Height))
+            {
+                b.SetResolution(imag.HorizontalResolution, imag.VerticalResolution);
+
+                using (var g = System.Drawing.Graphics.FromImage(b))
+                {
+                    g.Clear(Color.White);
+                    g.DrawImageUnscaled(imag, 0, 0);
+                }
+
+                newImage = new System.IO.MemoryStream();
+                b.Save(newImage, ImageFormat.Jpeg);
+                newImage.Position = 0;
+                // Now save b as a JPEG like you normally would
+            }
+
+
+            var img = org.pdfclown.documents.contents.entities.Image.Get(newImage);
             if (img == null) throw new InvalidOperationException("O logotipo não pode ser carregado, certifique-se que a imagem esteja no formato JPEG não progressivo.");
             _LogoObject = img.ToXObject(PdfDocument);
         }
